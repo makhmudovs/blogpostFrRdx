@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useNotificationDispatch } from "../context/NotificationContext";
+import {
+  setNotification,
+  clearNotification,
+} from "../features/notificationSlice";
 import { setBlogs } from "../features/blogSlice";
 import { deleteBlog, getAll, updateBlog, createBlog } from "../request";
 import Blog from "../components/Blog";
@@ -13,7 +16,6 @@ const Blogs = () => {
   const { blogs } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const dispatchNotification = useNotificationDispatch();
   const getBlogs = async () => {
     try {
       const blogs = await getAll();
@@ -32,27 +34,19 @@ const Blogs = () => {
     try {
       await createBlog(blog, config);
       getBlogs();
-      dispatchNotification({
-        type: "setMessage",
-        message: "Hello, World!",
-        messageType: "success",
-      });
+      dispatch(
+        setNotification({ message: "Created successfully", type: "success" })
+      );
       setTimeout(() => {
-        dispatchNotification({
-          type: "clearMessage",
-        });
+        dispatch(clearNotification());
       }, 2500);
     } catch (error) {
       console.error("error while creating a blog ", error.message);
-      dispatchNotification({
-        type: "setMessage",
-        message: error.response.data.error,
-        messageType: "error",
-      });
+      dispatch(
+        setNotification({ message: error.response.data.error, type: "error" })
+      );
       setTimeout(() => {
-        dispatchNotification({
-          type: "clearMessage",
-        });
+        dispatch(clearNotification());
       }, 2500);
     }
   };
@@ -73,28 +67,20 @@ const Blogs = () => {
       );
       if (updatedBlog) {
         getBlogs();
-        dispatchNotification({
-          type: "setMessage",
-          message: "Liked successfully",
-          messageType: "success",
-        });
+        dispatch(
+          setNotification({ message: "Liked successfully", type: "success" })
+        );
         setTimeout(() => {
-          dispatchNotification({
-            type: "clearMessage",
-          });
+          dispatch(clearNotification());
         }, 2500);
       }
     } catch (error) {
       console.error("error occured while liking the blog ", error);
-      dispatchNotification({
-        type: "setMessage",
-        message: error.response.data.error,
-        messageType: "error",
-      });
+      dispatch(
+        setNotification({ message: "error.response.data.error", type: "error" })
+      );
       setTimeout(() => {
-        dispatchNotification({
-          type: "clearMessage",
-        });
+        dispatch(clearNotification());
       }, 2500);
     }
   };
@@ -110,27 +96,19 @@ const Blogs = () => {
         navigate("/login", { replace: true });
       }
       getBlogs();
-      dispatchNotification({
-        type: "setMessage",
-        message: "Deleted successfully",
-        messageType: "success",
-      });
+      dispatch(
+        setNotification({ message: "Deleted Successfully", type: "success" })
+      );
       setTimeout(() => {
-        dispatchNotification({
-          type: "clearMessage",
-        });
+        dispatch(clearNotification());
       }, 2500);
     } catch (error) {
       console.error("error occured while deleting the blog ", error);
-      dispatchNotification({
-        type: "setMessage",
-        message: error.response.data.error,
-        messageType: "error",
-      });
+      dispatch(
+        setNotification({ message: error.response.data.error, type: "error" })
+      );
       setTimeout(() => {
-        dispatchNotification({
-          type: "clearMessage",
-        });
+        dispatch(clearNotification());
       }, 2500);
     }
   };

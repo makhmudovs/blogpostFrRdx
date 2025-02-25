@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
-  name: "blog",
+  name: "user",
   initialState,
   reducers: {
     setUser: (state, action) => {

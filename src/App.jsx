@@ -10,7 +10,7 @@ function App() {
     <div className="bg-gray-50 dark:bg-gray-900 h-screen w-screen">
       <div className="max-w-screen-xl mx-auto">
         <Navbar />
-        <Notification/>
+        <Notification />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
