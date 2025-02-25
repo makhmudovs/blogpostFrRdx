@@ -35,7 +35,7 @@ const BlogForm = ({ handleNewBlog }) => {
               id="title"
               className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type blog title"
-              required
+              required={true}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -53,7 +53,7 @@ const BlogForm = ({ handleNewBlog }) => {
               id="author"
               className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type author name"
-              required
+              required={true}
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
             />
@@ -71,7 +71,7 @@ const BlogForm = ({ handleNewBlog }) => {
               id="url"
               className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type blog url"
-              required
+              required={true}
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
@@ -89,7 +89,7 @@ const BlogForm = ({ handleNewBlog }) => {
               id="likes"
               className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="likes"
-              required
+              required={true}
               value={likes}
               onChange={(e) => setLikes(e.target.value)}
             />
