@@ -15,6 +15,11 @@ const getAll = async () => {
   return response.data;
 };
 
+const getBlog = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`);
+  return response.data;
+};
+
 const loginUser = async (creds) => {
   const request = await axios.post("/api/login", creds);
   const response = await request.data;
@@ -40,11 +45,33 @@ const createBlog = async (newBlog, config) => {
   return await req.data;
 };
 
+const createComment = async (id, comment) => {
+  const req = await axios.post(`${baseUrl}/comment/${id}`, {
+    comments: comment
+  });
+  const res = await req.data;
+  return res;
+};
+
+const getUsers = async () => {
+  const response = await axios.get('/api/users');
+  return response.data;
+};
+
+const getUser = async (id) => {
+  const response = await axios.get(`/api/users/${id}`);
+  return response.data;
+};
+
 export {
   getAll,
   loginUser,
   setToken,
   updateBlog,
   deleteBlog,
-  createBlog
+  createBlog,
+  getBlog,
+  createComment,
+  getUsers,
+  getUser
 };
